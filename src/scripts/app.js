@@ -5,9 +5,12 @@ Vue.component('my-component',{
 })
 
 new Vue({
-    el: '#root',
+    el: '#guangguang',
     data: {
-        message : 'hello'
+        
+    },
+    methods : {
+
     }
 })
 
