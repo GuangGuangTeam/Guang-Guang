@@ -4,8 +4,8 @@
   "description": "WebApp with Vue.js",
   "main": "webpack.config.js",
   "scripts": {
-    "dev": "export NODE_ENV=dev && webpack && webpack-dev-server",
-    "build": "export NODE_ENV=prod && webpack"
+    "dev": "set NODE_ENV=dev&&webpack&&webpack-dev-server",
+    "build": "set NODE_ENV=prod&&webpack"
   },
   "repository": {
     "type": "git",

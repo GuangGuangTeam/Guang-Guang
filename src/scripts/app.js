@@ -1,8 +1,10 @@
 import Vue from 'vue';
 
-Vue.component('my-component',{
-    template : '<div>组件</div>'
-})
+//组件化
+//Vue.component('my-component',{
+//  template : '<div>组件</div>'
+//})
+
 
 new Vue({
     el: '#guangguang',
