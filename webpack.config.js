@@ -1,0 +1,185 @@
+/**
+ 1、启动server,模块热替换
+ 2、JS模块化开发
+ 3、编译SASS，less，CSS抽离
+ 4、Mock数据
+ 5、版本控制
+ 6、devtool
+ 7、合并压缩
+ 8、环境切换
+*/
+
+// 引入webpack
+var webpack = require('webpack')
+
+// 引入文本抽离插件
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
+
+// 引入html生成插件
+var HtmlWebpackPlugin = require('html-webpack-plugin')
+
+// 引入openBrowser 插件
+var OpenBrowserPlugin = require('open-browser-webpack-plugin')
+
+var outputDir = ''
+
+if (process.env.NODE_ENV === 'dev') {
+  outputDir = '/dev'
+} else {
+  outputDir = '/prod'
+}
+
+var public = {
+  // 配置入口
+  entry: {
+    'scripts/app': './src/scripts/app.js'
+  },
+
+  // 配置出口
+  output: {
+    filename: '[name].js',
+    path: __dirname + outputDir  // 必须是绝对路径
+  },
+
+  // devtool 配置
+  devtool: 'source-map',
+  resolve:{
+      alias:{
+          'vue$': 'vue/dist/vue.js'
+      }
+  },
+  // 配置模块
+  module: {
+    rules: [
+      // 解析ES6+
+      {
+        test: /\.js$/,
+        exclude: /node_modules/, // 排除node_modules下.js的解析
+        use: [
+          {
+            loader: 'babel-loader' // 应用babel-loader解析ES6+
+          }
+        ]
+      },
+
+      // 加载scss
+      {
+        test: /\.scss$/,
+        use:
+        //[
+          // { loader: 'style-loader' },
+          // { loader: 'css-loader' },
+          // { loader: 'sass-loader' }
+        //]
+        // CSS抽离
+          ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: ['css-loader', 'sass-loader']
+          })
+      },
+
+      // 加载css
+      {
+        test: /\.css$/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' }
+        ]
+      },
+
+      // 加载图片
+      {
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 1000,
+          name: 'media/images/[name].[hash:7].[ext]'
+        }
+      },
+
+      // 加载媒体文件
+      {
+        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: 'media/mp4/[name].[hash:7].[ext]'
+        }
+      },
+
+      // 加载iconfont
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: 'media/iconfont/[name].[hash:7].[ext]'
+        }
+      }
+    ]
+  },
+
+  // 配置插件
+  plugins: [
+    // 生成抽离文本文件插件的实例
+    new ExtractTextPlugin({
+      filename: (getPath)=>{
+        return getPath('[name].css').replace('scripts', 'styles')
+      },
+      allChunks: true
+    }),
+
+    // 生成编译HTML(index.html)的插件的实例
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      filename: 'index.html',
+      chunks: ['scripts/app']
+    }),
+
+    // 代码压缩
+    // new webpack.optimize.UglifyJsPlugin({
+    //   compress: {
+    //     warnings: false
+    //   },
+    //   output: {
+    //     comments: false
+    //   }
+    // }),
+
+    // 自动在打开浏览器打开页面
+    // new OpenBrowserPlugin({
+    //   url: 'http://localhost:4000'
+    // })
+  ]
+}
+
+var devserver = { // 配置webserver
+  devServer: {
+    host: 'localhost',
+    port: 9000,
+    contentBase: __dirname + outputDir,
+    noInfo: true,
+    proxy: {
+      '/api': {
+        target: 'https://api.douban.com/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      },
+      '/vip': {
+        target: 'http://localhost:9000/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/vip': ''
+        }
+      }
+    }
+  }
+}
+
+if (process.env.NODE_ENV === 'dev') {
+  module.exports = Object.assign({}, public, devserver)
+} else {
+  module.exports = public
+}
