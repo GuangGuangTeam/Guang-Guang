@@ -1,18 +1,14 @@
+import 'styles/app.scss';
+
+import 'styles/modules/commen.scss';
+
 import Vue from 'vue';
 
-//组件化
-//Vue.component('my-component',{
-//  template : '<div>组件</div>'
-//})5616516
-
-
+import Index from './view/index.vue'
 new Vue({
     el: '#guangguang',
-    data: {
-        
-    },
-    methods : {
-
+    components: {
+        Index : Index
     }
 })
 

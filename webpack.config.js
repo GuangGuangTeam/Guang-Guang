@@ -45,7 +45,8 @@ var public = {
   devtool: 'source-map',
   resolve:{
       alias:{
-          'vue$': 'vue/dist/vue.js'
+          'vue$': 'vue/dist/vue.js',
+          'styles': __dirname + '/src/styles'
       }
   },
   // 配置模块
@@ -61,7 +62,16 @@ var public = {
           }
         ]
       },
-
+      // vue+
+      {
+        test: /\.vue$/,
+        exclude: /node_modules/, // 排除node_modules下.js的解析
+        use: [
+          {
+            loader: 'vue-loader'
+          }
+        ]
+      },
       // 加载scss
       {
         test: /\.scss$/,
@@ -92,8 +102,8 @@ var public = {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          limit: 1000,
-          name: 'media/images/[name].[hash:7].[ext]'
+          limit: 10,
+          name: 'media/images/[name].[ext]'
         }
       },
 
@@ -112,8 +122,8 @@ var public = {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          limit: 10000,
-          name: 'media/iconfont/[name].[hash:7].[ext]'
+          limit: 10,
+          name: 'media/iconfont/[name].[ext]'
         }
       }
     ]
