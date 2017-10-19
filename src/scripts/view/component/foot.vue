@@ -26,6 +26,8 @@
   </div>
 </template>
 <script>
+import '../../../media/images/iconfont/iconfont.ttf'
+import '../../../media/images/iconfont/iconfont.woff'
 export default {
   data() {
     return {

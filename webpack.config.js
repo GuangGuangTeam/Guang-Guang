@@ -166,7 +166,7 @@ var public = {
 var devserver = { // 配置webserver
   devServer: {
     host: 'localhost',
-    port: 9000,
+    port: 7000,
     contentBase: __dirname + outputDir,
     noInfo: true,
     proxy: {
@@ -178,7 +178,7 @@ var devserver = { // 配置webserver
         }
       },
       '/vip': {
-        target: 'http://localhost:9000/',
+        target: 'http://localhost:7000/',
         changeOrigin: true,
         pathRewrite: {
           '^/vip': ''

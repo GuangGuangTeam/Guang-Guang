@@ -1,9 +1,10 @@
 <template lang="html">
-  <div class="">
-      轮播图...
+  <div class="banner">
+      <img src="../../../media/images/ba1.jpeg"/>
   </div>
 </template>
 <script>
+import '../../../media/images/ba1.jpeg'
 export default {
   data() {
     return {
@@ -19,6 +20,10 @@ export default {
 @charset "UTF-8";
 @import '../../../styles/app.scss';
 @import '../../../styles/modules/commen.scss';
-
+.banner{
+      img{
+          width: 100%;
+      }
+  }
 </style>
 
