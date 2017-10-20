@@ -1,0 +1,29 @@
+.m-foot{
+    height: .44rem;
+    background: #fff;
+    ul{
+        @include border(1px 0 0 0);
+        @include flexbox();
+        @include align-items();
+        height: 100%;
+        li{
+            @include flex();
+            @include flexbox();
+            
+            @include flex-direction(column);
+            @include justify-content();
+            @include align-items();
+            i{
+                font-weight: 100;
+                font-size: 0.18rem;
+            }
+            b{
+            font-weight: 300;
+            font-size: 0.1rem;
+            }
+            &.active b,&.active i{
+                color: #f02a41;
+            }
+        }
+    }
+}

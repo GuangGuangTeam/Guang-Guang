@@ -2,3 +2,9 @@
 @import "./yo/variables.scss";
 @import "./yo/reset.scss";
 
+
+@import '../styles/modules/commen.scss';
+@import '../styles/modules/index.scss';
+@import './modules/main/main.scss';
+@import './modules/component/top.scss';
+@import './modules/component/foot.scss';

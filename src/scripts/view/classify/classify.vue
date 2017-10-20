@@ -15,10 +15,4 @@ export default {
   }
 }
 </script>
-<style lang="scss">
-@charset "UTF-8";
-@import '../../../styles/app.scss';
-@import '../../../styles/modules/commen.scss';
-
-</style>
 
