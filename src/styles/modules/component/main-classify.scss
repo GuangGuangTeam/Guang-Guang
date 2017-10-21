@@ -1,0 +1,89 @@
+.classify-menu{
+    ul{
+        li{
+            .content{
+                width: 100%;
+                height: 3.76rem;
+                background: hsl(9, 91%, 65%);
+                p{
+                    height: 0.28rem;
+                    width: 100%;
+                    text-align: center;
+                    line-height: 0.28rem;
+                    img{
+                        // width: 100%;
+                        height: 0.17rem;
+                    }
+                }
+                ul{
+                    padding: .05rem;
+                    padding-top: 0;
+                    width: 100%;
+                    height: 1.68rem;
+                    background: hsl(9, 91%, 65%);
+                    @include flexbox();
+                    @include align-items();
+                    @include flex-wrap(wrap);
+                    
+                    li{
+                        width: 50%;
+                        height: 0.84rem;
+                        @include flexbox();
+                        @include flex-direction(column);
+                        @include justify-content();
+                        @include align-items();
+                        @include border(0 0 1px 1px);
+                        background: #fff;
+                        img{
+                            width: 1.41rem;
+                            height: 0.72rem;
+                        }
+                        &:nth-child(2n-1){
+                            @include border(0 0 1px 0);
+                        }
+                        &:nth-child(3){
+                            @include border(0 0 0 0);
+                        }
+                        &:nth-child(4){
+                            @include border(0 0 0 1px);
+                        }
+                    }
+                    
+                }
+                ul.small{
+                    height: .98rem;
+                    li{
+                        width: 25%;
+                        height: 0.94rem;
+                        @include flexbox();
+                        @include justify-content();
+                        @include align-items();
+                        @include border(0 0 1px 1px);
+                        background: #fff;
+                        img{
+                            width: 0.70rem;
+                            height: 0.77rem;
+                        }
+                        &:nth-child(n){
+                            @include border(1px 0 0 1px);
+                        }
+                        &:first-child{
+                            @include border(1px 0 0 0);
+                        }
+                    }
+                }
+                .ad-big-img{
+                    background: rgb(248, 248, 248);
+                    padding: .05rem;
+                    width: 100%;
+                    height: 0.82rem;
+                    img{
+                        height: 0.72rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+

@@ -67,6 +67,9 @@
                     <img src="../../../media/images/c4.jpeg"/>
                 </li>
             </ul>
+            <div class="ad-big-img">
+                <img src="../../../media/images/class1.jpeg" alt="">
+            </div>
         </div>
         <MainClassify></MainClassify>
         <ProductsList></ProductsList>
@@ -85,13 +88,8 @@ import '../../../media/images/menu/m5.png'
 import '../../../media/images/menu/m6.png'
 import '../../../media/images/menu/m7.png'
 import '../../../media/images/menu/m8.png'
-
+import '../../../media/images/class1.jpeg'
 import '../../../media/images/ad1.jpeg'
-import '../../../media/images/c1.jpeg'
-import '../../../media/images/c2.jpeg'
-import '../../../media/images/c3.jpeg'
-import '../../../media/images/c4.jpeg'
-import '../../../media/images/t1.png'
 export default {
   data() {
       return {

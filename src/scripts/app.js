@@ -1,14 +1,19 @@
 import 'styles/app.scss';
 
-import 'styles/modules/commen.scss';
-
 import Vue from 'vue';
 
-import Index from './view/index.vue'
+import VueRouter from 'vue-router'
+import routes from './routes'
+
+Vue.use(VueRouter)
+
+const router = new VueRouter({
+  routes,
+  linkActiveClass: 'active'
+})
+
 new Vue({
     el: '#guangguang',
-    components: {
-        Index : Index
-    }
+    router
 })
 

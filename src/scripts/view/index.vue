@@ -2,7 +2,7 @@
     <div class="m-index">
         <Top></Top>
         <section>
-            <MainCont></MainCont>
+            <router-view></router-view>
         </section>
         <Foot></Foot>
     </div>

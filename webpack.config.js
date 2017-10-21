@@ -45,7 +45,7 @@ var public = {
   devtool: 'source-map',
   resolve:{
       alias:{
-          'vue$': 'vue/dist/vue.js',
+          'vue$': 'vue/dist/vue.esm.js',
           'styles': __dirname + '/src/styles'
       }
   },
@@ -82,10 +82,15 @@ var public = {
           // { loader: 'sass-loader' }
         //]
         // CSS抽离
-          ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: ['css-loader', 'sass-loader']
-          })
+        ExtractTextPlugin.extract({
+          fallback: 'vue-style-loader',
+          use: ['css-loader', 'sass-loader', {
+            loader: 'sass-resources-loader',
+            options: {
+              resources: [__dirname + '/src/styles/app.scss', __dirname + '/src/styles/modules/common.scss']
+            }
+          }]
+        })
       },
 
       // 加载css
@@ -160,7 +165,13 @@ var public = {
     // new OpenBrowserPlugin({
     //   url: 'http://localhost:4000'
     // })
-  ]
+  ],
+  // externals
+  externals: {
+      'vue': 'window.Vue',
+      'vue-router': 'window.VueRouter',
+      'axios': 'window.axios'
+    }
 }
 
 var devserver = { // 配置webserver

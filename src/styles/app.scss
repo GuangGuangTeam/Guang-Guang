@@ -1,10 +1,11 @@
-@import "./yo/base.scss";
-@import "./yo/variables.scss";
-@import "./yo/reset.scss";
-
+@import "./yo/usage/core/reset";
 
 @import '../styles/modules/commen.scss';
 @import '../styles/modules/index.scss';
-@import './modules/main/main.scss';
+
 @import './modules/component/top.scss';
 @import './modules/component/foot.scss';
+
+@import './modules/main/main.scss';
+@import './modules/component/main-classify.scss';
+@import './modules/component/products-list.scss';

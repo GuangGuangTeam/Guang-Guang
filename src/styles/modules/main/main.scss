@@ -75,9 +75,7 @@
     }
     .content{
         width: 100%;
-        height: 2.25rem;
-        padding: .05rem;
-        padding-top: 0;
+        height: 3.07rem;
         background: #fe319f;
         p{
             height: 0.28rem;
@@ -90,9 +88,11 @@
             }
         }
         ul{
+            padding: .05rem;
+            padding-top: 0;
             width: 100%;
-            height: 1.9rem;
-            background: $base-color;
+            height: 1.95rem;
+            background: #fe319f;
             @include flexbox();
             @include align-items();
             @include flex-wrap(wrap);
@@ -105,6 +105,7 @@
                 @include justify-content();
                 @include align-items();
                 @include border(0 0 1px 1px);
+                background: #fff;
                 img{
                     width: 1.41rem;
                     height: 0.77rem;
@@ -118,6 +119,16 @@
                 &:nth-child(4){
                     @include border(0 0 0 1px);
                 }
+            }
+        }
+        .ad-big-img{
+            background: #fff;
+            padding: .045rem;
+            width: 100%;
+            height: 0.82rem;
+            img{
+                width: 100%;
+                height: 0.72rem;
             }
         }
     }
